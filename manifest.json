@@ -1,0 +1,24 @@
+  {
+    "author": "Vincent Fagioli",
+    "name": "Lecture contextualisée",
+    "version": "1.0",
+    "description": "Plugin permetant de changer le genre grammatical de la lecture ainsi que la police",
+    "manifest_version": 2,
+    "permissions": [],
+    "page_action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/cpnv_16x16.png",
+        "32": "images/cpnv_32x32.png",
+        "48": "images/cpnv_48x48.png",
+        "128": "images/cpnv_128x128.png"
+      }
+    },
+    "icons": {
+      "16": "images/cpnv_16x16.png",
+      "32": "images/cpnv_32x32.png",
+      "48": "images/cpnv_48x48.png",
+      "128": "images/cpnv_128x128.png"
+    },
+    
+  }
