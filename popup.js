@@ -1,10 +1,10 @@
 changeFont.onclick = function() {
-    //Obtient l'onglet sur lequel le plugin est lancé
+    
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      //Injecte du Javascript sur l'onglet précédemment récupérer
-        chrome.tabs.executeScript(
+      chrome.tabs.executeScript(
           tabs[0].id,
-          {code: 'alert("Je ne suis pas encore prêt!!");'});
+          {code: ' var span = document.getElementsByClassName("Fontdyslexic");var i;for (i = 0; i < span.length; i++) {span[i].style.fontFamily = "opendyslexic";}'
+          });
     });
 };
 changeMale.onclick = function() {
