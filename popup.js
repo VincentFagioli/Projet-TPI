@@ -11,7 +11,7 @@ changeMale.onclick = function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.executeScript(
           tabs[0].id,
-          {code: 'alert("Je ne suis pas encore prêt!!");'});
+          {code: 'var regex = /\\·\\w*/g; var rer = ""; var span = document.getElementsByClassName("Grammaticaltype");var i;for (i = 0; i < span.length; i++) { var chaine =  span[i].innerText;var resultat=chaine.replace(regex, rer);span[i].innerText =resultat;}'});
     });
 };
 changeFemale.onclick = function() {
@@ -21,3 +21,6 @@ changeFemale.onclick = function() {
           {code: 'alert("Je ne suis pas encore prêt!!");'});
     });
 };
+
+
+
