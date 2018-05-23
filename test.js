@@ -15,7 +15,7 @@ testGenderMale.onclick = function(){
         var chaine =  span[i].innerText;
         var resultat = chaine.replace(regex, rer);
         console.log(resultat);
-        span[i].innerText = "ff";
+        span[i].innerText = resultat;
     }
 }
 

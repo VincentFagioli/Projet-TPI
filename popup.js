@@ -13,6 +13,7 @@ changeMale.onclick = function() {
           tabs[0].id,
           {code: 'var regex = /\\·\\w*/g; var rer = ""; var span = document.getElementsByClassName("Grammaticaltype");var i;for (i = 0; i < span.length; i++) { var chaine =  span[i].innerText;var resultat=chaine.replace(regex, rer);span[i].innerText =resultat;}'});
     });
+    document.getElementById('changeFemale').disabled = true;
 };
 changeFemale.onclick = function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
