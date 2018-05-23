@@ -1,9 +1,13 @@
 changeFont.onclick = function() {
     
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      chrome.tabs.executeScript(
+        chrome.tabs.insertCSS(
           tabs[0].id,
-          {code: ' var span = document.getElementsByClassName("Fontdyslexic");var i;for (i = 0; i < span.length; i++) {span[i].style.fontFamily = "opendyslexic";}'
+          {code: '@import url("https://fonts.googleapis.com/css?family=Libre+Barcode+39"); .Fontdyslexic{font-family: "Libre Barcode 39", cursive;}'
+          });
+        chrome.tabs.executeScript(
+          tabs[0].id,
+          {code: '<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> var span = document.getElementsByClassName("Fontdyslexic");var i;for (i = 0; i < span.length; i++) {span[i].style.fontFamily = "Lobster";}'
           });
     });
 };
