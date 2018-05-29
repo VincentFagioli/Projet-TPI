@@ -58,6 +58,9 @@ testGenderFemale.onclick = function () {
                         resultat = m[1].replace(/s+$/g, m[groupIndex]);
                     }
                     // sinon on prend le texte avant le · jusqu'a la dernière lettre qui match avec la première du 2ème mot par exemple utilisateur·trice donne utilisa et on rajoute ensuite le 2ème mot donc dans cet exemple trice 
+                    else if (m[groupIndex].charAt(0) === "è"){
+                        resultat = m[1].substring(0, m[1].lastIndexOf("e")) + m[groupIndex];
+                    }
                     else {
                         resultat = m[1].substring(0, m[1].lastIndexOf(m[groupIndex].charAt(0))) + m[groupIndex]; 
                     }
