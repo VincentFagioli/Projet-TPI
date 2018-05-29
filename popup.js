@@ -1,4 +1,4 @@
-changeFont.onclick = function() {
+/*changeFont.onclick = function() {
     
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.insertCSS(
@@ -10,19 +10,19 @@ changeFont.onclick = function() {
                 '        span[i].style.fontFamily = \'Libre Barcode 39\';\n' +
                 '    }'});
     });
-};
+};*/
 changeMale.onclick = function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.executeScript(
           tabs[0].id,
-          {code: ' var regex = /(\\·\\w*)/g;\n' +
-              '    var rer = "";\n' +
+            
+          {code: ' var regex = /\\·\\S*[^.,;:!?\\s)]/g;\n' +
+              '    var replace = "";\n' +
               '    var span = document.getElementsByClassName(\'Grammaticaltype\');\n' +
               '    var i;\n' +
               '    for (i = 0; i < span.length; i++) {\n' +
               '        var chaine =  span[i].innerText;\n' +
-              '        var resultat = chaine.replace(regex, rer);\n' +
-              '        console.log(resultat);\n' +
+              '        var resultat = chaine.replace(regex, replace);\n' +
               '        span[i].innerText = resultat;\n' +
               '    }'
           });
