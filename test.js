@@ -9,6 +9,7 @@ testFont.onclick = function() {
 testGenderMale.onclick = function(){
     // la regex sélectionne le · et tous les caractère qui suivent //bug restant si le mot est suivit d'un . ou d'une , il match aussi et aussi avec du·de la , le "la" après le changement de genre 
     var regex = /(\·\S*)/g;
+    var regex2 = /du\·de la/g;
     var rer = "";
     // Récupère les éléments qui ont la bonne la class et on les parcours ensuite avec la boucle for
     var span = document.getElementsByClassName('Grammaticaltype');
@@ -16,8 +17,12 @@ testGenderMale.onclick = function(){
     for (i = 0; i < span.length; i++) {
         //On récupère le texte de l'élément 
         var chaine =  span[i].innerText;
-        // On remplace tous ce qui match avec la regex par "" 
-        var resultat = chaine.replace(regex, rer);
+        if(chaine.match(regex2)){
+            chaine = chaine.replace(regex2, "du");
+        }
+
+            // On remplace tous ce qui match avec la regex par ""
+            var resultat = chaine.replace(regex, rer);
         console.log(resultat);
         // On remet le nouveau texte dans l'élément
         span[i].innerText = resultat;
