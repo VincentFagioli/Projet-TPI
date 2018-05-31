@@ -17,7 +17,7 @@ changeMale.onclick = function() {
           tabs[0].id,
             
           {code:' // la regex sélectionne le · et tous les caractère qui suivent //bug restant si le mot est suivit d\'un . ou d\'une , il match aussi et aussi avec du·de la , le "la" après le changement de genre \n' +
-              '    var regex = /(\\·\\S*)/g;\n' +
+              '    var regex = /\\·\\S*[^.,;:!?`\'"¨>}\\]\\/*\\s]/g;\n' +
               '    var regex2 = /du\\·de la/g;\n' +
               '    var rer = "";\n' +
               '    // Récupère les éléments qui ont la bonne la class et on les parcours ensuite avec la boucle for\n' +
@@ -65,11 +65,11 @@ changeFemale.onclick = function() {
               '                //Quand le foreach traite le texte après le ·\n' +
               '                if (`${groupIndex}` == 2) {\n' +
               '                    //si c\'est e on le rajoute simplement à la fin du mot \n' +
-              '                    if (m[groupIndex] === "e") {\n' +
+              '                    if (m[groupIndex] === "e" || m[groupIndex] === "tte" ) {\n' +
               '                        resultat = m[1] + m[groupIndex];\n' +
               '                    }\n' +
               '                    //si c\'est es on enlève le s du premier et on rajoute es\n' +
-              '                    else if (m[groupIndex] === "es") {\n' +
+              '                    else if (m[groupIndex] === "es"|| m[groupIndex] === "tes") {\n' +
               '                        resultat = m[1].replace(/s+$/g, m[groupIndex]);\n' +
               '                    }\n' +
               '                    // sinon on prend le texte avant le · jusqu\'a la dernière lettre qui match avec la première du 2ème mot par exemple utilisateur·trice donne utilisa et on rajoute ensuite le 2ème mot donc dans cet exemple trice \n' +
@@ -88,4 +88,5 @@ changeFemale.onclick = function() {
               '        span[i].innerText = temp;\n' +
               '    }'});
     });
+    document.getElementById('changeMale').disabled = true;
 };
