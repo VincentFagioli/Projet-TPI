@@ -8,7 +8,7 @@ testFont.onclick = function() {
 
 testGenderMale.onclick = function(){
     // la regex sélectionne le · et tous les caractère qui suivent //bug restant si le mot est suivit d'un . ou d'une , il match aussi et aussi avec du·de la , le "la" après le changement de genre 
-    var regex = /(\·\S*)/g;
+    var regex = /\·\S*[^.,;:!?`'"¨>}\]\/*\s]/g;
     var regex2 = /du\·de la/g;
     var rer = "";
     // Récupère les éléments qui ont la bonne la class et on les parcours ensuite avec la boucle for
@@ -20,10 +20,8 @@ testGenderMale.onclick = function(){
         if(chaine.match(regex2)){
             chaine = chaine.replace(regex2, "du");
         }
-
-            // On remplace tous ce qui match avec la regex par ""
-            var resultat = chaine.replace(regex, rer);
-        console.log(resultat);
+        // On remplace tous ce qui match avec la regex par ""
+        var resultat = chaine.replace(regex, rer);
         // On remet le nouveau texte dans l'élément
         span[i].innerText = resultat;
     }
@@ -43,7 +41,6 @@ testGenderFemale.onclick = function () {
         // On récupérer le texte de l'élément et on le stocke dans str et dans temp
         var str = span[i].innerText;
         var temp=str;
-        
         while ((m = regex.exec(str)) !== null) {
             //Permet de sortir de la boucle while si rien n'a matché
             if (m.index === regex.lastIndex) {
@@ -51,15 +48,14 @@ testGenderFemale.onclick = function () {
             }
             //Pour chaque élément séléectionner avec les paranthèse du regex
             m.forEach((match, groupIndex) => {
-                
                 //Quand le foreach traite le texte après le ·
                 if (`${groupIndex}` == 2) {
                     //si c'est e on le rajoute simplement à la fin du mot 
-                    if (m[groupIndex] === "e") {
+                    if (m[groupIndex] === "e" || m[groupIndex] === "tte"  ) {
                         resultat = m[1] + m[groupIndex];
                     }
-                    //si c'est es on enlève le s du premier et on rajoute es
-                    else if (m[groupIndex] === "es") {
+                    //si c'est es on enlève le s du premier et on rajoute es à la fin du mot ou si c'est tes on enlève aussi le s et on rajoute tes à la fin cela sert à géré le cas du tous·tes
+                    else if (m[groupIndex] === "es" || m[groupIndex] === "tes") {
                         resultat = m[1].replace(/s+$/g, m[groupIndex]);
                     }
                     // sinon on prend le texte avant le · jusqu'a la dernière lettre qui match avec la première du 2ème mot par exemple utilisateur·trice donne utilisa et on rajoute ensuite le 2ème mot donc dans cet exemple trice 
