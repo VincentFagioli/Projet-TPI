@@ -1,16 +1,20 @@
-/*changeFont.onclick = function() {
-    
+changeFont.onclick = function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.insertCSS(
             tabs[0].id,
-            {code: ' <link href="https://fonts.googleapis.com/css?family=Libre+Barcode+39" rel="stylesheet">\n' +
-                '    var span = document.getElementsByClassName(\'Fontdyslexic\'); \n' +
-                '    var i; \n' +
-                '    for (i = 0; i < span.length; i++){ \n' +
-                '        span[i].style.fontFamily = \'Libre Barcode 39\';\n' +
+            {code: '@font-face {\n' +
+                '            font-family: \'OpenDyslexic\';\n' +
+                '            src: url("OpenDyslexic.otf");\n' +
+                '        }'});
+        chrome.tabs.executeScript(
+            tabs[0].id,
+            {code: ' var span = document.getElementsByClassName(\'Fontdyslexic\');\n' +
+                '    var i;\n' +
+                '    for (i = 0; i < span.length; i++) {\n' +
+                '        span[i].style.fontFamily = \'OpenDyslexic\';\n' +
                 '    }'});
     });
-};*/
+};
 changeMale.onclick = function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.executeScript(
@@ -41,8 +45,7 @@ changeFemale.onclick = function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.executeScript(
           tabs[0].id,
-          {code:' // le bug restant est avec les mot ou le e devient è au féminin il est contournable avec une autre syntaxe mais il faudrait rajouter un test\n' +
-              '    // la regex séléctionne tous texte qui est suivit d\'un· et tous ce qui suit jusqu\'a l\'espace, avec les parenthèse on sépare le texte avant le · et celui qui suit\n' +
+          {code:'// la regex séléctionne tous texte qui est suivit d\'un· et tous ce     qui suit jusqu\'a l\'espace, avec les parenthèse on sépare le texte         avant le · et celui qui suit\n' +
               '    var regex = /(\\S*)+(?:\\·)+(\\S*)/mg;\n' +
               '    //la regex séléctionne tous texte qui est suivit d\'un· et tous ce qui suit jusqu\'a l\'espace\n' +
               '    var regex2 = /\\S*\\·+\\S*/m;\n' +
