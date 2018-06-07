@@ -1,3 +1,6 @@
+//Description: Code Javascript réagissant aux clique sur les boutons de la page test.html, cette page ma permit de tester le code au fur et à mesure
+// Date:07.06.2018
+// Auteur:Vincent Fagioli
 testFont.onclick = function() {
     var span = document.getElementsByClassName('Fontdyslexic');
     var i;
@@ -55,7 +58,7 @@ testGenderFemale.onclick = function () {
                     if (m[groupIndex] === "e" || m[groupIndex] === "tte" || m[1].charAt((m[1].length-1))=== m[groupIndex].charAt(0)  ) {
                         resultat = m[1] + m[groupIndex];
                     }
-                    //si c'est es on enlève le s du premier et on rajoute es à la fin du mot ou si c'est tes on enlève aussi le s et on rajoute tes à la fin cela sert à géré le cas du tous·tes
+                    //si c'est es on enlève le s du premier et on rajoute es à la fin du mot ou si c'est tes on enlève aussi le s et on rajoute tes à la fin cela sert à géré le cas du tous·tes, le dernier cas sert à gérer le cas ou l'avant dernier caractère du mot masculin correspond au premier de la partie féminine comme dans chefs·fes ou il suffit d'enlever le s et de rajouter la partie féminine à la suite.
                     else if (m[groupIndex] === "es" || m[groupIndex] === "tes" || m[1].charAt((m[1].length-2))=== m[groupIndex].charAt(0)) {
                         resultat = m[1].replace(/s+$/g, m[groupIndex]);
                     }

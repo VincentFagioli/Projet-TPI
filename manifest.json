@@ -1,9 +1,12 @@
- {
+//Description:Définition des informations du plugin et des fichiers utilisés
+// Date:07.06.2018
+// Auteur:Vincent Fagioli
+{
      //Définition des informations de base du plugin qui seront vue une fois le plugin ajouté à Google Chrome
     "author": "Vincent Fagioli",
     "name": "Lecture contextualisée",
     "version": "1.0",
-    "description": "Plugin permetant de changer le genre grammatical de la lecture ainsi que la police",
+    "description": "Plugin permettant de changer le genre grammatical de la lecture ainsi que la police",
      //activeTab permet d'intéragir avec la page active pour insérer du css par exemple
      // declarativeContent...
     "permissions": [ "activeTab","declarativeContent"],

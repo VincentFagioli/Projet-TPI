@@ -1,3 +1,6 @@
+//Description:Code Javascript réagissant aux clique sur les boutons du plugin
+// Date:07.06.2018
+// Auteur:Vincent Fagioli
 changeFont.onclick = function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         //On insère d'abord le code css qui donne le lien vers la police qui est fourni avec le plugin
